@@ -1,0 +1,153 @@
+<!-- templates/laporan/produk_terlaris.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Produk Terlaris</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background-color: #27ae60;
+        }body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #2c3e50;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #2980b9;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+            padding: 10px;
+            background-color: #ecf0f1;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    Laporan Produk dan Transaksi
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="{% url 'home' %}">Beranda</a>
+    <a href="{% url 'produk' %}">Produk</a>
+    <a href="{% url 'total_pendapatan' %}">Total Pendapatan</a>
+    <a href="{% url 'produk_stok' %}">Produk Stok</a>
+    <a href="{% url 'produk_terlaris' %}">Produk Terlaris</a>
+</div>
+
+<div class="container">
+    <h1>Laporan Produk Terlaris</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Terjual</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produk in produk_terlaris %}
+                <tr>
+                    <td>{{ produk.produk__nama }}</td>
+                    <td>{{ produk.total_terjual }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'home' %}" class="back-button">Kembali ke Beranda</a>
+</div>
+
+</body>
+</html>

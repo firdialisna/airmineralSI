@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Transaksi Penjualan</title>
+</head>
+<body>
+    <h1>Laporan Transaksi Penjualan</h1>
+    
+    {% for transaksi in laporan %}
+    <h2>Transaksi ID: {{ transaksi.id }} - Cabang: {{ transaksi.cabang }} - Tanggal: {{ transaksi.tanggal }}</h2>
+    <p>Total Harga: {{ transaksi.total_harga }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Produk</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produk in transaksi.produk %}
+            <tr>
+                <td>{{ produk.nama }}</td>
+                <td>{{ produk.jumlah }}</td>
+                <td>{{ produk.harga }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</body>
+</html>
